@@ -11,6 +11,9 @@ import {
   GET_ASSETS_REQUEST,
   GET_ASSETS_FAILURE,
   GET_ASSETS_SUCCESS,
+  ADD_ASSET_REQUEST,
+  ADD_ASSET_FAILURE,
+  ADD_ASSET_SUCCESS,
 } from "../actions/assetsActionTypes";
 
 function* getWorkspaces() {
@@ -43,10 +46,26 @@ function* getAssets(action) {
   }
 }
 
+function* addAsset(action) {
+  const { formik } = action.meta;
+
+  try {
+    const data = yield call(api.mutations.addAsset, action.payload);
+
+    formik.setSubmitting(false);
+
+    yield put({ type: ADD_ASSET_SUCCESS, payload: data.data });
+  } catch (error) {
+    yield put({ type: ADD_ASSET_FAILURE, error });
+  }
+}
+
 const saga = function* () {
   yield takeLatest(GET_WORKSPACES_REQUEST, getWorkspaces);
   yield takeLatest(ADD_WORKSPACE_REQUEST, addWorkspace);
   yield takeLatest(GET_ASSETS_REQUEST, getAssets);
+  yield takeLatest(GET_ASSETS_REQUEST, getAssets);
+  yield takeLatest(ADD_ASSET_REQUEST, addAsset);
 };
 
 export default saga;

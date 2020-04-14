@@ -9,6 +9,7 @@ import AssetGrid from "./AssetGrid";
 import AddAssetButtonGrid from "./AddAssetButtonGrid";
 import { getWorkspaces } from "../actions/assetsActionCreators";
 import { ParagraphXSmall } from "../../../components/typography";
+import AddAssetModal from "./AddAssetModal";
 
 const Wrapper = styled.div`
   padding: 1rem 0;
@@ -32,8 +33,20 @@ const Grid = styled.div`
 function Assets() {
   const [search, setSearch] = React.useState("");
   const [view, setView] = React.useState(VIEWS.grid);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [workspace, setWorkspace] = React.useState({});
   const dispatch = useDispatch();
   const workspaces = useSelector((state) => state.assets.workspaces);
+
+  function onClose() {
+    setWorkspace({});
+    setIsOpen(false);
+  }
+
+  function handleOnClick(workspace) {
+    setWorkspace(workspace);
+    setIsOpen(true);
+  }
 
   React.useEffect(() => {
     dispatch(getWorkspaces());
@@ -55,7 +68,7 @@ function Assets() {
             <div key={workspace.id}>
               <ParagraphXSmall>{workspace.name}</ParagraphXSmall>
               <Grid>
-                <AddAssetButtonGrid />
+                <AddAssetButtonGrid onClick={() => handleOnClick(workspace)} />
                 {workspace.assets.map((asset) => {
                   return (
                     <AssetGrid
@@ -71,6 +84,7 @@ function Assets() {
           );
         })}
       </div>
+      <AddAssetModal isOpen={isOpen} onClose={onClose} workspace={workspace} />
     </Wrapper>
   );
 }

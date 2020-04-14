@@ -2,6 +2,7 @@ import {
   GET_WORKSPACES_REQUEST,
   ADD_WORKSPACE_REQUEST,
   GET_ASSETS_REQUEST,
+  ADD_ASSET_REQUEST,
 } from "./assetsActionTypes";
 
 function getWorkspaces() {
@@ -24,4 +25,12 @@ function getAssets(payload) {
   };
 }
 
-export { getWorkspaces, addWorkspace, getAssets };
+function addAsset(payload, meta) {
+  return {
+    payload,
+    meta,
+    type: ADD_ASSET_REQUEST,
+  };
+}
+
+export { getWorkspaces, addWorkspace, getAssets, addAsset };

@@ -12,10 +12,15 @@ function addWorkspace(params) {
   return axios.post(`/workspaces`, params);
 }
 
-export { signup, signin, addWorkspace };
+function addAsset(params) {
+  return axios.post(`/assets`, params);
+}
+
+export { signup, signin, addWorkspace, addAsset };
 
 export default {
   signup,
   signin,
   addWorkspace,
+  addAsset,
 };
