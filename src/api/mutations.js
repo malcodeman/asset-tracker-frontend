@@ -8,9 +8,14 @@ function signin(params) {
   return axios.post(`/auth/signin`, params);
 }
 
-export { signup, signin };
+function addWorkspace(params) {
+  return axios.post(`/workspaces`, params);
+}
+
+export { signup, signin, addWorkspace };
 
 export default {
   signup,
   signin,
+  addWorkspace,
 };
