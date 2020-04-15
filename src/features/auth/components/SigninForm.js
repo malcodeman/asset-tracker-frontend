@@ -7,8 +7,13 @@ import styled from "styled-components";
 import { FormControl } from "../../../components/form-control";
 import { Input } from "../../../components/input";
 import { Button } from "../../../components/button";
+import { Notification, KIND } from "../../../components/notification";
 
 const FormWrapper = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const StyledNotification = styled(Notification)`
   margin-bottom: 1rem;
 `;
 
@@ -61,6 +66,11 @@ function SigninForm(props) {
           />
         </FormControl>
       </FormWrapper>
+      {formik.errors.general && (
+        <StyledNotification kind={KIND.negative}>
+          {formik.errors.general}
+        </StyledNotification>
+      )}
       <StyledButton type="submit" disabled={!formik.isValid || !formik.dirty}>
         <span>Sign in</span>
       </StyledButton>

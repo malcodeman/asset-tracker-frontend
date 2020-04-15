@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { FormControl } from "../../../components/form-control";
 import { Input } from "../../../components/input";
 import { Button } from "../../../components/button";
+import { Notification, KIND } from "../../../components/notification";
 
 const FormGrid = styled.div`
   display: grid;
@@ -22,6 +23,10 @@ const FormGrid = styled.div`
 
 const GridItem = styled.div`
   grid-area: ${(props) => props.gridArea};
+`;
+
+const StyledNotification = styled(Notification)`
+  margin-bottom: 1rem;
 `;
 
 const StyledButton = styled(Button)`
@@ -128,6 +133,11 @@ function SignupForm(props) {
           </FormControl>
         </GridItem>
       </FormGrid>
+      {formik.errors.general && (
+        <StyledNotification kind={KIND.negative}>
+          {formik.errors.general}
+        </StyledNotification>
+      )}
       <StyledButton type="submit" disabled={!formik.isValid || !formik.dirty}>
         <span>Create account</span>
       </StyledButton>
