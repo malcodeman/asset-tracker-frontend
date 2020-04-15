@@ -16,11 +16,16 @@ function addAsset(params) {
   return axios.post(`/assets`, params);
 }
 
-export { signup, signin, addWorkspace, addAsset };
+function updateMyself(params) {
+  return axios.put(`/users/myself`, params);
+}
+
+export { signup, signin, addWorkspace, addAsset, updateMyself };
 
 export default {
   signup,
   signin,
   addWorkspace,
   addAsset,
+  updateMyself,
 };

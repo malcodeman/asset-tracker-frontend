@@ -8,9 +8,14 @@ function getAssets(params) {
   return axios.get(`/assets`, params);
 }
 
-export { getWorkspaces, getAssets };
+function getMyself() {
+  return axios.get(`/users/myself`);
+}
+
+export { getWorkspaces, getAssets, getMyself };
 
 export default {
   getWorkspaces,
   getAssets,
+  getMyself,
 };

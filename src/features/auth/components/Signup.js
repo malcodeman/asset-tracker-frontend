@@ -50,7 +50,9 @@ function Signup() {
   const history = useHistory();
 
   function onSubmit(formik) {
-    dispatch(signup(formik.values, { formik, history }));
+    const payload = { values: formik.values };
+
+    dispatch(signup(payload, { formik, history }));
   }
 
   return (
