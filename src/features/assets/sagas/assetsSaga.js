@@ -14,6 +14,9 @@ import {
   ADD_ASSET_REQUEST,
   ADD_ASSET_FAILURE,
   ADD_ASSET_SUCCESS,
+  GET_ASSETS_BY_WORKSPACE_ID_SUCCESS,
+  GET_ASSETS_BY_WORKSPACE_ID_FAILURE,
+  GET_ASSETS_BY_WORKSPACE_ID_REQUEST,
 } from "../actions/assetsActionTypes";
 
 function* getWorkspaces() {
@@ -23,6 +26,16 @@ function* getWorkspaces() {
     yield put({ type: GET_WORKSPACES_SUCCESS, payload: data.data });
   } catch (error) {
     yield put({ type: GET_WORKSPACES_FAILURE, error });
+  }
+}
+
+function* getAssetsByWorkspaceId(action) {
+  try {
+    const data = yield call(api.queries.getAssetsByWorkspaceId, action.payload);
+
+    yield put({ type: GET_ASSETS_BY_WORKSPACE_ID_SUCCESS, payload: data.data });
+  } catch (error) {
+    yield put({ type: GET_ASSETS_BY_WORKSPACE_ID_FAILURE, error });
   }
 }
 
@@ -62,8 +75,8 @@ function* addAsset(action) {
 
 const saga = function* () {
   yield takeLatest(GET_WORKSPACES_REQUEST, getWorkspaces);
+  yield takeLatest(GET_ASSETS_BY_WORKSPACE_ID_REQUEST, getAssetsByWorkspaceId);
   yield takeLatest(ADD_WORKSPACE_REQUEST, addWorkspace);
-  yield takeLatest(GET_ASSETS_REQUEST, getAssets);
   yield takeLatest(GET_ASSETS_REQUEST, getAssets);
   yield takeLatest(ADD_ASSET_REQUEST, addAsset);
 };

@@ -1,5 +1,6 @@
 import {
   GET_WORKSPACES_REQUEST,
+  GET_ASSETS_BY_WORKSPACE_ID_REQUEST,
   ADD_WORKSPACE_REQUEST,
   GET_ASSETS_REQUEST,
   ADD_ASSET_REQUEST,
@@ -8,6 +9,13 @@ import {
 function getWorkspaces() {
   return {
     type: GET_WORKSPACES_REQUEST,
+  };
+}
+
+function getAssetsByWorkspaceId(payload) {
+  return {
+    payload,
+    type: GET_ASSETS_BY_WORKSPACE_ID_REQUEST,
   };
 }
 
@@ -33,4 +41,10 @@ function addAsset(payload, meta) {
   };
 }
 
-export { getWorkspaces, addWorkspace, getAssets, addAsset };
+export {
+  getWorkspaces,
+  getAssetsByWorkspaceId,
+  addWorkspace,
+  getAssets,
+  addAsset,
+};

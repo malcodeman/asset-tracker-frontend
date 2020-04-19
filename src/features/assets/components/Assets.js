@@ -1,26 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
 
-import constants from "../../../constants";
-import { VIEWS } from "../constants";
-import Sidebar from "./Sidebar";
 import AssetGrid from "./AssetGrid";
 import AddAssetButtonGrid from "./AddAssetButtonGrid";
-import { getWorkspaces } from "../actions/assetsActionCreators";
-import { ParagraphXSmall } from "../../../components/typography";
+import { getAssetsByWorkspaceId } from "../actions/assetsActionCreators";
 import AddAssetModal from "./AddAssetModal";
 
 const Wrapper = styled.div`
-  padding: 1rem 0;
-  display: grid;
-  grid-gap: 1rem;
-  @media (min-width: ${constants.BREAKPOINTS.MEDIUM_DEVICES}) {
-    grid-template-columns: 1fr 3fr;
-  }
+  padding: 1rem;
 `;
-
-const SidebarWrapper = styled.div``;
 
 const Grid = styled.div`
   display: grid;
@@ -31,60 +21,44 @@ const Grid = styled.div`
 `;
 
 function Assets() {
-  const [search, setSearch] = React.useState("");
-  const [view, setView] = React.useState(VIEWS.grid);
   const [isOpen, setIsOpen] = React.useState(false);
-  const [workspace, setWorkspace] = React.useState({});
   const dispatch = useDispatch();
-  const workspaces = useSelector((state) => state.assets.workspaces);
+  const assets = useSelector((state) => state.assets.assets);
+  const params = useParams();
+  const workspaceId = params.workspaceId;
 
   function onClose() {
-    setWorkspace({});
     setIsOpen(false);
   }
 
-  function handleOnClick(workspace) {
-    setWorkspace(workspace);
+  function handleOnClick() {
     setIsOpen(true);
   }
 
   React.useEffect(() => {
-    dispatch(getWorkspaces());
-  }, [dispatch]);
+    dispatch(getAssetsByWorkspaceId(workspaceId));
+  }, [dispatch, workspaceId]);
 
   return (
     <Wrapper>
-      <SidebarWrapper>
-        <Sidebar
-          search={search}
-          setSearch={setSearch}
-          view={view}
-          setView={setView}
-        />
-      </SidebarWrapper>
-      <div>
-        {workspaces.map((workspace) => {
+      <Grid>
+        <AddAssetButtonGrid onClick={handleOnClick} />
+        {assets.map((asset) => {
           return (
-            <div key={workspace.id}>
-              <ParagraphXSmall>{workspace.name}</ParagraphXSmall>
-              <Grid>
-                <AddAssetButtonGrid onClick={() => handleOnClick(workspace)} />
-                {workspace.assets.map((asset) => {
-                  return (
-                    <AssetGrid
-                      key={asset.tag}
-                      tag={asset.tag}
-                      description={asset.description}
-                      location={asset.location}
-                    />
-                  );
-                })}
-              </Grid>
-            </div>
+            <AssetGrid
+              key={asset.tag}
+              tag={asset.tag}
+              description={asset.description}
+              location={asset.location}
+            />
           );
         })}
-      </div>
-      <AddAssetModal isOpen={isOpen} onClose={onClose} workspace={workspace} />
+      </Grid>
+      <AddAssetModal
+        isOpen={isOpen}
+        onClose={onClose}
+        workspaceId={workspaceId}
+      />
     </Wrapper>
   );
 }

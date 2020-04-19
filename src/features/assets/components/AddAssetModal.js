@@ -7,14 +7,14 @@ import AddAssetForm from "./AddAssetForm";
 import { addAsset } from "../actions/assetsActionCreators";
 
 function AddAssetModal(props) {
-  const { isOpen, onClose, workspace } = props;
+  const { isOpen, onClose, workspaceId } = props;
   const dispatch = useDispatch();
   const initialName = "Unnamed record";
   const [name, setName] = React.useState(initialName);
 
   function handleSubmit(formik) {
     const payload = {
-      values: { workspaceId: workspace.id, ...formik.values },
+      values: { workspaceId, ...formik.values },
     };
 
     dispatch(addAsset(payload, { formik }));

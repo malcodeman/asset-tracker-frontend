@@ -4,18 +4,18 @@ function getWorkspaces() {
   return axios.get(`/workspaces`);
 }
 
-function getAssets(params) {
-  return axios.get(`/assets`, params);
+function getAssetsByWorkspaceId(id) {
+  return axios.get(`/workspaces/${id}/assets`);
 }
 
 function getMyself() {
   return axios.get(`/users/myself`);
 }
 
-export { getWorkspaces, getAssets, getMyself };
+export { getWorkspaces, getAssetsByWorkspaceId, getMyself };
 
 export default {
   getWorkspaces,
-  getAssets,
+  getAssetsByWorkspaceId,
   getMyself,
 };

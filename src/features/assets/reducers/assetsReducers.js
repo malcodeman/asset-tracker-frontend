@@ -2,10 +2,12 @@ import {
   GET_WORKSPACES_SUCCESS,
   ADD_WORKSPACE_SUCCESS,
   ADD_ASSET_SUCCESS,
+  GET_ASSETS_BY_WORKSPACE_ID_SUCCESS,
 } from "../actions/assetsActionTypes";
 
 const initialState = {
   workspaces: [],
+  assets: [],
 };
 
 export default (state = initialState, action) => {
@@ -23,15 +25,12 @@ export default (state = initialState, action) => {
     case ADD_ASSET_SUCCESS:
       return {
         ...state,
-        workspaces: state.workspaces.map((workspace) => {
-          if (workspace.id === action.payload.workspaceId) {
-            return {
-              ...workspace,
-              assets: [...workspace.assets, action.payload],
-            };
-          }
-          return workspace;
-        }),
+        assets: [...state.assets, action.payload],
+      };
+    case GET_ASSETS_BY_WORKSPACE_ID_SUCCESS:
+      return {
+        ...state,
+        assets: action.payload[0].assets,
       };
     default:
       return state;
