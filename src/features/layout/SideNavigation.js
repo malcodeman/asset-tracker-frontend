@@ -11,11 +11,13 @@ import constants from "../../constants";
 
 const List = styled.div`
   display: flex;
-  border-right: ${(props) => props.theme.borders.border200};
+  border-bottom: ${(props) => props.theme.borders.border200};
+  background-color: ${(props) => props.theme.colors.backgroundSecondary};
   overflow-x: auto;
   @media (min-width: ${constants.BREAKPOINTS.MEDIUM_DEVICES}) {
     flex-direction: column;
     height: 100%;
+    border-right: ${(props) => props.theme.borders.border200};
   }
 `;
 
@@ -26,10 +28,10 @@ const ListItem = styled(NavLink)`
   padding: 0.5rem;
   color: ${(props) => props.theme.colors.contentPrimary};
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ${(props) => props.theme.colors.accent}7F;
   }
   &.active {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ${(props) => props.theme.colors.accent};
   }
 `;
 

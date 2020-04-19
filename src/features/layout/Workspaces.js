@@ -14,10 +14,14 @@ import constants from "../../constants";
 const List = styled.div`
   display: flex;
   overflow-x: auto;
-  border-right: ${(props) => props.theme.borders.border200};
+  padding: 0.5rem;
+  gap: 1rem;
+  border-bottom: ${(props) => props.theme.borders.border200};
+  background-color: ${(props) => props.theme.colors.backgroundSecondary};
   @media (min-width: ${constants.BREAKPOINTS.MEDIUM_DEVICES}) {
     flex-direction: column;
     height: 100%;
+    border-right: ${(props) => props.theme.borders.border200};
   }
 `;
 
@@ -27,12 +31,14 @@ const ListItem = styled(NavLink)`
   justify-content: center;
   cursor: pointer;
   padding: 0.5rem;
+  border: 2px solid transparent;
   color: ${(props) => props.theme.colors.contentPrimary};
+  border-radius: ${(props) => props.theme.borders.radius200};
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    border: 2px solid ${(props) => props.theme.colors.contentPrimary}7F;
   }
   &.active {
-    background-color: rgba(0, 0, 0, 0.1);
+    border: 2px solid ${(props) => props.theme.colors.contentPrimary};
   }
 `;
 
@@ -42,10 +48,12 @@ const StyledButton = styled.button`
   justify-content: center;
   cursor: pointer;
   padding: 0.5rem;
-  border: 0;
+  border: 2px solid transparent;
+  background-color: transparent;
   color: ${(props) => props.theme.colors.contentPrimary};
+  border-radius: ${(props) => props.theme.borders.radius200};
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ${(props) => props.theme.colors.accent}7F;
   }
 `;
 
@@ -73,7 +81,7 @@ function Workspaces() {
         );
       })}
       <StyledButton onClick={handleAddWorkspace}>
-        <PlusIcon />
+        <PlusIcon size={20} />
       </StyledButton>
     </List>
   );

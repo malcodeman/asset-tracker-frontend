@@ -8,10 +8,12 @@ import constants from "../../constants";
 
 const Grid = styled.div`
   display: grid;
+  grid-template-rows: auto 48px 1fr;
+  height: 100vh;
   background-color: ${(props) => props.theme.colors.backgroundPrimary};
   @media (min-width: ${constants.BREAKPOINTS.MEDIUM_DEVICES}) {
-    grid-template-columns: 48px 256px 1fr;
-    height: 100vh;
+    grid-template-rows: initial;
+    grid-template-columns: auto 256px 1fr;
   }
 `;
 
