@@ -10,6 +10,7 @@ import Assets from "./features/assets/components/Assets";
 import Employees from "./features/employees/components/Employees";
 import Vendors from "./features/vendors/components/Vendors";
 import Locations from "./features/locations/components/Locations";
+import Workspaces from "./features/layout/Workspaces";
 import history from "./routing/history";
 import themes from "./themes";
 import GlobalStyle from "./GlobalStyle";
@@ -21,29 +22,32 @@ function App() {
     <ThemeProvider theme={themes.light}>
       <Router history={history}>
         {isLoggedIn ? (
-          <Route path="/workspaces/:workspaceId">
-            <Layout>
-              <Switch>
-                <Route
-                  path="/workspaces/:workspaceId"
-                  component={Assets}
-                  exact
-                />
-                <Route
-                  path="/workspaces/:workspaceId/employees"
-                  component={Employees}
-                />
-                <Route
-                  path="/workspaces/:workspaceId/vendors"
-                  component={Vendors}
-                />
-                <Route
-                  path="/workspaces/:workspaceId/locations"
-                  component={Locations}
-                />
-              </Switch>
-            </Layout>
-          </Route>
+          <>
+            <Route exact path="/" component={Workspaces} />
+            <Route path="/workspaces/:workspaceId">
+              <Layout>
+                <Switch>
+                  <Route
+                    path="/workspaces/:workspaceId"
+                    component={Assets}
+                    exact
+                  />
+                  <Route
+                    path="/workspaces/:workspaceId/employees"
+                    component={Employees}
+                  />
+                  <Route
+                    path="/workspaces/:workspaceId/vendors"
+                    component={Vendors}
+                  />
+                  <Route
+                    path="/workspaces/:workspaceId/locations"
+                    component={Locations}
+                  />
+                </Switch>
+              </Layout>
+            </Route>
+          </>
         ) : (
           <>
             <Route exact path="/" component={Signup} />

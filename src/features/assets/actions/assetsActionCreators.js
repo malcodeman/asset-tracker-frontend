@@ -19,9 +19,10 @@ function getAssetsByWorkspaceId(payload) {
   };
 }
 
-function addWorkspace(payload) {
+function addWorkspace(payload, meta) {
   return {
     payload,
+    meta,
     type: ADD_WORKSPACE_REQUEST,
   };
 }

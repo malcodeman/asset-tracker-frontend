@@ -40,8 +40,13 @@ function* getAssetsByWorkspaceId(action) {
 }
 
 function* addWorkspace(action) {
+  const { history } = action.meta;
+
   try {
     const data = yield call(api.mutations.addWorkspace, action.payload);
+    const id = data.data.id;
+
+    history.push(`/workspaces/${id}`);
 
     yield put({ type: ADD_WORKSPACE_SUCCESS, payload: data.data });
   } catch (error) {

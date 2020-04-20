@@ -5,11 +5,9 @@ import { NavLink } from "react-router-dom";
 
 import PlusIcon from "../../icons/Plus";
 
-import {
-  addWorkspace,
-  getWorkspaces,
-} from "../assets/actions/assetsActionCreators";
+import { getWorkspaces } from "../assets/actions/assetsActionCreators";
 import constants from "../../constants";
+import AddWorkspaceModal from "../workspaces/components/AddWorkspaceModal";
 
 const List = styled.div`
   display: flex;
@@ -59,11 +57,8 @@ const StyledButton = styled.button`
 
 function Workspaces() {
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = React.useState(false);
   const workspaces = useSelector((state) => state.assets.workspaces);
-
-  function handleAddWorkspace() {
-    dispatch(addWorkspace());
-  }
 
   React.useEffect(() => {
     dispatch(getWorkspaces());
@@ -75,14 +70,15 @@ function Workspaces() {
         return (
           <ListItem to={`/workspaces/${item.id}`} key={item.id}>
             <span role="img" aria-label="">
-              😀
+              {item.emoji}
             </span>
           </ListItem>
         );
       })}
-      <StyledButton onClick={handleAddWorkspace}>
+      <StyledButton onClick={() => setIsOpen(true)}>
         <PlusIcon size={20} />
       </StyledButton>
+      <AddWorkspaceModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </List>
   );
 }
