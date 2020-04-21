@@ -20,7 +20,11 @@ function updateMyself(params) {
   return axios.put(`/users/myself`, params);
 }
 
-export { signup, signin, addWorkspace, addAsset, updateMyself };
+function addVendor(params) {
+  return axios.post(`/vendors`, params);
+}
+
+export { signup, signin, addWorkspace, addAsset, updateMyself, addVendor };
 
 export default {
   signup,
@@ -28,4 +32,5 @@ export default {
   addWorkspace,
   addAsset,
   updateMyself,
+  addVendor,
 };

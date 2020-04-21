@@ -12,10 +12,20 @@ function getMyself() {
   return axios.get(`/users/myself`);
 }
 
-export { getWorkspaces, getAssetsByWorkspaceId, getMyself };
+function getVendorsByWorkspaceId(id) {
+  return axios.get(`/workspaces/${id}/vendors`);
+}
+
+export {
+  getWorkspaces,
+  getAssetsByWorkspaceId,
+  getMyself,
+  getVendorsByWorkspaceId,
+};
 
 export default {
   getWorkspaces,
   getAssetsByWorkspaceId,
   getMyself,
+  getVendorsByWorkspaceId,
 };
