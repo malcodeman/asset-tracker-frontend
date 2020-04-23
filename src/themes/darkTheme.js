@@ -49,13 +49,14 @@ const theme = {
     notificationNegativeText: "#F4AFA7",
     tableBackground: "#141414",
     tableHeadBackgroundColor: "#1F1F1F",
+    tableDataBackgroundColor: "#141414",
     headerNavigationFill: "#1F1F1F",
-    spinnerTrackFill: "#CBCBCB"
+    spinnerTrackFill: "#CBCBCB",
   },
   typography,
   sizing,
   borders,
-  animations
+  animations,
 };
 
 export default theme;

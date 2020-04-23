@@ -2,22 +2,16 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
+import { format } from "date-fns";
 
-import AssetGrid from "./AssetGrid";
-import AddAssetButtonGrid from "./AddAssetButtonGrid";
 import { getAssetsByWorkspaceId } from "../actions/assetsActionCreators";
 import AddAssetModal from "./AddAssetModal";
+import Table from "../../../components/table/Table";
+
+import hooks from "../../../hooks";
 
 const Wrapper = styled.div`
-  padding: 1rem;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(128px, 1fr));
-  margin-bottom: 1rem;
+  height: 100%;
 `;
 
 function Assets() {
@@ -26,14 +20,58 @@ function Assets() {
   const assets = useSelector((state) => state.assets.assets);
   const params = useParams();
   const workspaceId = params.workspaceId;
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Tag",
+        accessor: "tag",
+      },
+      {
+        Header: "Description",
+        accessor: "description",
+      },
+      {
+        Header: "Photo URL",
+        accessor: "photoURL",
+      },
+      {
+        Header: "Location",
+        accessor: "location",
+      },
+      {
+        Header: "Price",
+        accessor: "price",
+      },
+      {
+        Header: "Used by",
+        accessor: "usedBy",
+      },
+      {
+        Header: "Vendor",
+        accessor: "vendor",
+      },
+      {
+        Header: "Purchase date",
+        accessor: "purchaseDate",
+        Cell: ({ value }) => format(new Date(value), "dd/MM/yyyy"),
+      },
+      {
+        Header: "Item type",
+        accessor: "itemType",
+      },
+      {
+        Header: "Condition notes",
+        accessor: "conditionNotes",
+      },
+    ],
+    []
+  );
 
   function onClose() {
     setIsOpen(false);
   }
 
-  function handleOnClick() {
-    setIsOpen(true);
-  }
+  hooks.useKeyPress("+", () => setIsOpen(true));
 
   React.useEffect(() => {
     dispatch(getAssetsByWorkspaceId(workspaceId));
@@ -41,19 +79,7 @@ function Assets() {
 
   return (
     <Wrapper>
-      <Grid>
-        <AddAssetButtonGrid onClick={handleOnClick} />
-        {assets.map((asset) => {
-          return (
-            <AssetGrid
-              key={asset.tag}
-              tag={asset.tag}
-              description={asset.description}
-              location={asset.location}
-            />
-          );
-        })}
-      </Grid>
+      <Table columns={columns} data={assets} />
       <AddAssetModal
         isOpen={isOpen}
         onClose={onClose}

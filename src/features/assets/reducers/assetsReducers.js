@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
     case GET_ASSETS_BY_WORKSPACE_ID_SUCCESS:
       return {
         ...state,
-        assets: action.payload[0].assets,
+        assets: action.payload.assets,
       };
     default:
       return state;

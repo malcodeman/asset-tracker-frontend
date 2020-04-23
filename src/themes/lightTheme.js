@@ -47,15 +47,16 @@ const theme = {
     notificationWarningText: "#B45427",
     notificationNegativeBackground: "#FDF0EF",
     notificationNegativeText: "#AE372A",
-    tableBackground: "#FFFFFF",
-    tableHeadBackgroundColor: "#FFFFFF",
+    tableBackground: "#F5F5F5",
+    tableHeadBackgroundColor: "#F5F5F5",
+    tableDataBackgroundColor: "#FFFFFF",
     headerNavigationFill: "transparent",
-    spinnerTrackFill: "#333333"
+    spinnerTrackFill: "#333333",
   },
   typography,
   sizing,
   borders,
-  animations
+  animations,
 };
 
 export default theme;

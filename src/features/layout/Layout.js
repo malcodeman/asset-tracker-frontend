@@ -13,8 +13,12 @@ const Grid = styled.div`
   background-color: ${(props) => props.theme.colors.backgroundPrimary};
   @media (min-width: ${constants.BREAKPOINTS.MEDIUM_DEVICES}) {
     grid-template-rows: initial;
-    grid-template-columns: auto 256px 1fr;
+    grid-template-columns: 60px 256px 1fr;
   }
+`;
+
+const Main = styled.main`
+  overflow-x: hidden;
 `;
 
 function Layout(props) {
@@ -24,7 +28,7 @@ function Layout(props) {
     <Grid>
       <Workspaces />
       <SideNavigation />
-      <main>{children}</main>
+      <Main>{children}</Main>
     </Grid>
   );
 }

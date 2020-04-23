@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
     case GET_VENDORS_BY_WORKSPACE_ID_SUCCESS:
       return {
         ...state,
-        vendors: action.payload,
+        vendors: action.payload.vendors,
       };
     case ADD_VENDOR_SUCCESS:
       return {

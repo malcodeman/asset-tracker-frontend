@@ -1,10 +1,18 @@
 import React from "react";
+import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { getVendorsByWorkspaceId } from "../actions/vendorsActionCreators";
 
 import AddVendorModal from "./AddVendorModal";
+import Table from "../../../components/table/Table";
+
+import hooks from "../../../hooks";
+
+const Wrapper = styled.div`
+  height: 100%;
+`;
 
 function Vendors() {
   const dispatch = useDispatch();
@@ -12,31 +20,35 @@ function Vendors() {
   const params = useParams();
   const workspaceId = params.workspaceId;
   const vendors = useSelector((state) => state.vendors.vendors);
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Name",
+        accessor: "name",
+      },
+    ],
+    []
+  );
 
   function onClose() {
     setIsOpen(false);
   }
 
-  function handleOnClick() {
-    setIsOpen(true);
-  }
+  hooks.useKeyPress("+", () => setIsOpen(true));
 
   React.useEffect(() => {
     dispatch(getVendorsByWorkspaceId(workspaceId));
   }, [dispatch, workspaceId]);
 
   return (
-    <div>
-      <span onClick={handleOnClick}>Add</span>
-      {vendors.map((o) => (
-        <span key={o.id}>{o.name}</span>
-      ))}
+    <Wrapper>
+      <Table columns={columns} data={vendors} />
       <AddVendorModal
         isOpen={isOpen}
         workspaceId={workspaceId}
         onClose={onClose}
       />
-    </div>
+    </Wrapper>
   );
 }
 
