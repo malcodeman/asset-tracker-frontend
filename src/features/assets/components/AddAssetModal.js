@@ -16,9 +16,9 @@ function AddAssetModal(props) {
     const payload = {
       values: { workspaceId, ...formik.values },
     };
+    const meta = { formik, onClose };
 
-    dispatch(addAsset(payload, { formik }));
-    onClose();
+    dispatch(addAsset(payload, meta));
   }
 
   function handleOnChange(values) {

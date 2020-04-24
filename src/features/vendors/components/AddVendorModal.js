@@ -13,10 +13,9 @@ function AddVendorModal(props) {
 
   function handleSubmit(formik) {
     const payload = { values: { workspaceId, ...formik.values } };
-    const meta = { formik };
+    const meta = { formik, onClose };
 
     dispatch(addVendor(payload, meta));
-    onClose();
   }
 
   return (

@@ -65,12 +65,13 @@ function* getAssets(action) {
 }
 
 function* addAsset(action) {
-  const { formik } = action.meta;
+  const { formik, onClose } = action.meta;
 
   try {
     const data = yield call(api.mutations.addAsset, action.payload);
 
     formik.setSubmitting(false);
+    onClose();
 
     yield put({ type: ADD_ASSET_SUCCESS, payload: data.data });
   } catch (error) {

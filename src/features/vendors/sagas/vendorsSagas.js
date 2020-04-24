@@ -27,12 +27,13 @@ function* getVendorsByWorkspaceId(action) {
 }
 
 function* addVendor(action) {
-  const { formik } = action.meta;
+  const { formik, onClose } = action.meta;
 
   try {
     const data = yield call(api.mutations.addVendor, action.payload);
 
     formik.setSubmitting(false);
+    onClose();
 
     yield put({ type: ADD_VENDOR_SUCCESS, payload: data.data });
   } catch (error) {
