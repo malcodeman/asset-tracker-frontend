@@ -2,13 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { format } from "date-fns";
 
 import { getAssetsByWorkspaceId } from "../actions/assetsActionCreators";
 import AddAssetModal from "./AddAssetModal";
 import Table from "../../../components/table/Table";
 
 import hooks from "../../../hooks";
+import utils from "../../../utils";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -53,7 +53,7 @@ function Assets() {
       {
         Header: "Purchase date",
         accessor: "purchaseDate",
-        Cell: ({ value }) => format(new Date(value), "dd/MM/yyyy"),
+        Cell: ({ value }) => utils.formatDate(value),
       },
       {
         Header: "Item type",

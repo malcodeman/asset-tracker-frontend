@@ -24,7 +24,19 @@ function addVendor(params) {
   return axios.post(`/vendors`, params);
 }
 
-export { signup, signin, addWorkspace, addAsset, updateMyself, addVendor };
+function addEmployee(params) {
+  return axios.post(`/employees`, params);
+}
+
+export {
+  signup,
+  signin,
+  addWorkspace,
+  addAsset,
+  updateMyself,
+  addVendor,
+  addEmployee,
+};
 
 export default {
   signup,
@@ -33,4 +45,5 @@ export default {
   addAsset,
   updateMyself,
   addVendor,
+  addEmployee,
 };

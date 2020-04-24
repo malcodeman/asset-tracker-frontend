@@ -1,0 +1,52 @@
+import { call, put, takeLatest } from "redux-saga/effects";
+
+import api from "../../../api";
+import {
+  ADD_EMPLOYEE_FAILURE,
+  ADD_EMPLOYEE_REQUEST,
+  ADD_EMPLOYEE_SUCCESS,
+  GET_EMPLOYEES_BY_WORKSPACE_ID_FAILURE,
+  GET_EMPLOYEES_BY_WORKSPACE_ID_REQUEST,
+  GET_EMPLOYEES_BY_WORKSPACE_ID_SUCCESS,
+} from "../actions/employeesActionTypes";
+
+function* getEmployeesByWorkspaceId(action) {
+  try {
+    const data = yield call(
+      api.queries.getEmployeesByWorkspaceId,
+      action.payload
+    );
+
+    yield put({
+      type: GET_EMPLOYEES_BY_WORKSPACE_ID_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    yield put({ type: GET_EMPLOYEES_BY_WORKSPACE_ID_FAILURE, error });
+  }
+}
+
+function* addEmployee(action) {
+  const { formik, onClose } = action.meta;
+
+  try {
+    const data = yield call(api.mutations.addEmployee, action.payload);
+
+    formik.setSubmitting(false);
+    onClose();
+
+    yield put({ type: ADD_EMPLOYEE_SUCCESS, payload: data.data });
+  } catch (error) {
+    yield put({ type: ADD_EMPLOYEE_FAILURE, error });
+  }
+}
+
+const saga = function* () {
+  yield takeLatest(
+    GET_EMPLOYEES_BY_WORKSPACE_ID_REQUEST,
+    getEmployeesByWorkspaceId
+  );
+  yield takeLatest(ADD_EMPLOYEE_REQUEST, addEmployee);
+};
+
+export default saga;

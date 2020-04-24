@@ -16,11 +16,16 @@ function getVendorsByWorkspaceId(id) {
   return axios.get(`/workspaces/${id}/vendors`);
 }
 
+function getEmployeesByWorkspaceId(id) {
+  return axios.get(`/workspaces/${id}/employees`);
+}
+
 export {
   getWorkspaces,
   getAssetsByWorkspaceId,
   getMyself,
   getVendorsByWorkspaceId,
+  getEmployeesByWorkspaceId,
 };
 
 export default {
@@ -28,4 +33,5 @@ export default {
   getAssetsByWorkspaceId,
   getMyself,
   getVendorsByWorkspaceId,
+  getEmployeesByWorkspaceId,
 };
