@@ -28,6 +28,10 @@ function addEmployee(params) {
   return axios.post(`/employees`, params);
 }
 
+function addLocation(params) {
+  return axios.post(`/locations`, params);
+}
+
 export {
   signup,
   signin,
@@ -36,6 +40,7 @@ export {
   updateMyself,
   addVendor,
   addEmployee,
+  addLocation,
 };
 
 export default {
@@ -46,4 +51,5 @@ export default {
   updateMyself,
   addVendor,
   addEmployee,
+  addLocation,
 };

@@ -5,6 +5,7 @@ import assets from "../features/assets/reducers/assetsReducers";
 import users from "../features/users/reducers/usersReducers";
 import vendors from "../features/vendors/reducers/vendorsReducers";
 import employees from "../features/employees/reducers/employeesReducers";
+import locations from "../features/locations/reducers/locationsReducers";
 
 const rootReducer = combineReducers({
   auth,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   users,
   vendors,
   employees,
+  locations,
 });
 
 export default rootReducer;

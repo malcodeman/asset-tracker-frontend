@@ -20,12 +20,17 @@ function getEmployeesByWorkspaceId(id) {
   return axios.get(`/workspaces/${id}/employees`);
 }
 
+function getLocationsByWorkspaceId(id) {
+  return axios.get(`/workspaces/${id}/locations`);
+}
+
 export {
   getWorkspaces,
   getAssetsByWorkspaceId,
   getMyself,
   getVendorsByWorkspaceId,
   getEmployeesByWorkspaceId,
+  getLocationsByWorkspaceId,
 };
 
 export default {
@@ -34,4 +39,5 @@ export default {
   getMyself,
   getVendorsByWorkspaceId,
   getEmployeesByWorkspaceId,
+  getLocationsByWorkspaceId,
 };
