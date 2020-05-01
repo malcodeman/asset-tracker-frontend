@@ -1,6 +1,7 @@
 import {
   GET_LOCATIONS_BY_WORKSPACE_ID_REQUEST,
   ADD_LOCATION_REQUEST,
+  RESET_LOCATIONS,
 } from "./locationsActionTypes";
 
 function getLocationsByWorkspaceId(payload) {
@@ -18,4 +19,10 @@ function addLocation(payload, meta) {
   };
 }
 
-export { getLocationsByWorkspaceId, addLocation };
+function resetLocations() {
+  return {
+    type: RESET_LOCATIONS,
+  };
+}
+
+export { getLocationsByWorkspaceId, addLocation, resetLocations };

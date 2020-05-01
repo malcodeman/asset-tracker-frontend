@@ -1,6 +1,7 @@
 import {
   GET_EMPLOYEES_BY_WORKSPACE_ID_REQUEST,
   ADD_EMPLOYEE_REQUEST,
+  RESET_EMPLOYEES,
 } from "./employeesActionTypes";
 
 function getEmployeesByWorkspaceId(payload) {
@@ -18,4 +19,10 @@ function addEmployee(payload, meta) {
   };
 }
 
-export { getEmployeesByWorkspaceId, addEmployee };
+function resetEmployees() {
+  return {
+    type: RESET_EMPLOYEES,
+  };
+}
+
+export { getEmployeesByWorkspaceId, addEmployee, resetEmployees };

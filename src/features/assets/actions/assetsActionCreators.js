@@ -4,6 +4,7 @@ import {
   ADD_WORKSPACE_REQUEST,
   GET_ASSETS_REQUEST,
   ADD_ASSET_REQUEST,
+  RESET_ASSETS,
 } from "./assetsActionTypes";
 
 function getWorkspaces() {
@@ -42,10 +43,17 @@ function addAsset(payload, meta) {
   };
 }
 
+function resetAssets() {
+  return {
+    type: RESET_ASSETS,
+  };
+}
+
 export {
   getWorkspaces,
   getAssetsByWorkspaceId,
   addWorkspace,
   getAssets,
   addAsset,
+  resetAssets,
 };

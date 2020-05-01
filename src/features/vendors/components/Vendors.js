@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { getVendorsByWorkspaceId } from "../actions/vendorsActionCreators";
+import {
+  getVendorsByWorkspaceId,
+  resetVendors,
+} from "../actions/vendorsActionCreators";
 
 import AddVendorModal from "./AddVendorModal";
 import Table from "../../../components/table/Table";
@@ -38,6 +41,8 @@ function Vendors() {
 
   React.useEffect(() => {
     dispatch(getVendorsByWorkspaceId(workspaceId));
+
+    return () => dispatch(resetVendors());
   }, [dispatch, workspaceId]);
 
   return (

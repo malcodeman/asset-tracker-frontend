@@ -1,6 +1,7 @@
 import {
   ADD_EMPLOYEE_SUCCESS,
   GET_EMPLOYEES_BY_WORKSPACE_ID_SUCCESS,
+  RESET_EMPLOYEES,
 } from "../actions/employeesActionTypes";
 
 const initialState = {
@@ -18,6 +19,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         employees: [...state.employees, action.payload],
+      };
+    case RESET_EMPLOYEES:
+      return {
+        ...state,
+        employees: [],
       };
     default:
       return state;

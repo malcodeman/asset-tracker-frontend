@@ -3,6 +3,7 @@ import {
   ADD_WORKSPACE_SUCCESS,
   ADD_ASSET_SUCCESS,
   GET_ASSETS_BY_WORKSPACE_ID_SUCCESS,
+  RESET_ASSETS,
 } from "../actions/assetsActionTypes";
 
 const initialState = {
@@ -31,6 +32,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         assets: action.payload.assets,
+      };
+    case RESET_ASSETS:
+      return {
+        ...state,
+        assets: [],
       };
     default:
       return state;

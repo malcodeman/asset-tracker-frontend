@@ -1,6 +1,7 @@
 import {
   ADD_VENDOR_SUCCESS,
   GET_VENDORS_BY_WORKSPACE_ID_SUCCESS,
+  RESET_VENDORS,
 } from "../actions/vendorsActionTypes";
 
 const initialState = {
@@ -18,6 +19,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         vendors: [...state.vendors, action.payload],
+      };
+    case RESET_VENDORS:
+      return {
+        ...state,
+        vendors: [],
       };
     default:
       return state;

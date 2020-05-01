@@ -1,6 +1,7 @@
 import {
   GET_VENDORS_BY_WORKSPACE_ID_REQUEST,
   ADD_VENDOR_REQUEST,
+  RESET_VENDORS,
 } from "./vendorsActionTypes";
 
 function getVendorsByWorkspaceId(payload) {
@@ -18,4 +19,10 @@ function addVendor(payload, meta) {
   };
 }
 
-export { getVendorsByWorkspaceId, addVendor };
+function resetVendors() {
+  return {
+    type: RESET_VENDORS,
+  };
+}
+
+export { getVendorsByWorkspaceId, addVendor, resetVendors };

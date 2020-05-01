@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { getEmployeesByWorkspaceId } from "../actions/employeesActionCreators";
+import {
+  getEmployeesByWorkspaceId,
+  resetEmployees,
+} from "../actions/employeesActionCreators";
 
 import AddEmployeeModal from "./AddEmployeeModal";
 import Table from "../../../components/table/Table";
@@ -53,6 +56,8 @@ function Employees() {
 
   React.useEffect(() => {
     dispatch(getEmployeesByWorkspaceId(workspaceId));
+
+    return () => dispatch(resetEmployees());
   }, [dispatch, workspaceId]);
 
   return (

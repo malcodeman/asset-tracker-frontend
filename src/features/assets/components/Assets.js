@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
-import { getAssetsByWorkspaceId } from "../actions/assetsActionCreators";
+import {
+  getAssetsByWorkspaceId,
+  resetAssets,
+} from "../actions/assetsActionCreators";
 import AddAssetModal from "./AddAssetModal";
 import Table from "../../../components/table/Table";
 
@@ -75,6 +78,8 @@ function Assets() {
 
   React.useEffect(() => {
     dispatch(getAssetsByWorkspaceId(workspaceId));
+
+    return () => dispatch(resetAssets());
   }, [dispatch, workspaceId]);
 
   return (

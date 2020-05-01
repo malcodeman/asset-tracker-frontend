@@ -1,6 +1,7 @@
 import {
   ADD_LOCATION_SUCCESS,
   GET_LOCATIONS_BY_WORKSPACE_ID_SUCCESS,
+  RESET_LOCATIONS,
 } from "../actions/locationsActionTypes";
 
 const initialState = {
@@ -18,6 +19,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         locations: [...state.locations, action.payload],
+      };
+    case RESET_LOCATIONS:
+      return {
+        ...state,
+        locations: [],
       };
     default:
       return state;
