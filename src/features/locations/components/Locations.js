@@ -50,7 +50,6 @@ function Locations() {
         workspaceId={workspaceId}
         onClose={onClose}
       />
-      )
     </Wrapper>
   );
 }
