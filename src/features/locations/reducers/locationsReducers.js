@@ -1,8 +1,8 @@
 import {
   ADD_LOCATION_SUCCESS,
-  GET_LOCATIONS_BY_WORKSPACE_ID_SUCCESS,
   RESET_LOCATIONS,
 } from "../actions/locationsActionTypes";
+import { GET_LOCATIONS_BY_WORKSPACE_ID_SUCCESS } from "../../workspaces/actions/workspacesActionTypes";
 
 const initialState = {
   locations: [],

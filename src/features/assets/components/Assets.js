@@ -3,10 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
-import {
-  getAssetsByWorkspaceId,
-  resetAssets,
-} from "../actions/assetsActionCreators";
+import { getAssetsByWorkspaceId } from "../../workspaces/actions/workspacesActionCreators";
+import { resetAssets } from "../actions/assetsActionCreators";
 import AddAssetModal from "./AddAssetModal";
 import Table from "../../../components/table/Table";
 

@@ -6,6 +6,7 @@ import users from "../features/users/sagas/usersSagas";
 import vendors from "../features/vendors/sagas/vendorsSagas";
 import employees from "../features/employees/sagas/employeesSagas";
 import locations from "../features/locations/sagas/locationsSagas";
+import workspaces from "../features/workspaces/sagas/workspacesSagas";
 
 export default function* rootSaga() {
   yield all([
@@ -15,5 +16,6 @@ export default function* rootSaga() {
     fork(vendors),
     fork(employees),
     fork(locations),
+    fork(workspaces),
   ]);
 }

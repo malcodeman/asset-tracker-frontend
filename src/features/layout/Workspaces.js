@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import PlusIcon from "../../icons/Plus";
 
-import { getWorkspaces } from "../assets/actions/assetsActionCreators";
+import { getWorkspaces } from "../workspaces/actions/workspacesActionCreators";
 import constants from "../../constants";
 import AddWorkspaceModal from "../workspaces/components/AddWorkspaceModal";
 
@@ -58,7 +58,7 @@ const StyledButton = styled.button`
 function Workspaces() {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = React.useState(false);
-  const workspaces = useSelector((state) => state.assets.workspaces);
+  const workspaces = useSelector((state) => state.workspaces.workspaces);
 
   React.useEffect(() => {
     dispatch(getWorkspaces());

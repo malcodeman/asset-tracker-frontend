@@ -68,7 +68,7 @@ const StyledPlusIcon = styled(PlusIcon)`
 function Sidebar(props) {
   const { search, setSearch, view, setView } = props;
   const dispatch = useDispatch();
-  const workspaces = useSelector((state) => state.assets.workspaces);
+  const workspaces = useSelector((state) => state.workspaces.workspaces);
 
   function handleAddWorkspace() {
     dispatch(addWorkspace());

@@ -1,8 +1,8 @@
 import {
   ADD_EMPLOYEE_SUCCESS,
-  GET_EMPLOYEES_BY_WORKSPACE_ID_SUCCESS,
   RESET_EMPLOYEES,
 } from "../actions/employeesActionTypes";
+import { GET_EMPLOYEES_BY_WORKSPACE_ID_SUCCESS } from "../../workspaces/actions/workspacesActionTypes";
 
 const initialState = {
   employees: [],

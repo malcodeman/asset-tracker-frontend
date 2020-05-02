@@ -1,8 +1,8 @@
 import {
   ADD_VENDOR_SUCCESS,
-  GET_VENDORS_BY_WORKSPACE_ID_SUCCESS,
   RESET_VENDORS,
 } from "../actions/vendorsActionTypes";
+import { GET_VENDORS_BY_WORKSPACE_ID_SUCCESS } from "../../workspaces/actions/workspacesActionTypes";
 
 const initialState = {
   vendors: [],

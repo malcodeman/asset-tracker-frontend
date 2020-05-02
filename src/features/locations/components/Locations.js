@@ -3,11 +3,8 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import {
-  getLocationsByWorkspaceId,
-  resetLocations,
-} from "../actions/locationsActionCreators";
-
+import { getLocationsByWorkspaceId } from "../../workspaces/actions/workspacesActionCreators";
+import { resetLocations } from "../actions/locationsActionCreators";
 import AddLocationModal from "./AddLocationModal";
 import Table from "../../../components/table/Table";
 

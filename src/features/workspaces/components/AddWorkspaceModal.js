@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import { Modal, ModalHeader, ModalBody } from "../../../components/modal";
 import AddWorkspaceForm from "./AddWorkspaceForm";
-import { addWorkspace } from "../../assets/actions/assetsActionCreators";
+import { addWorkspace } from "../actions/workspacesActionCreators";
 
 function AddWorkspaceModal(props) {
   const { isOpen, onClose } = props;

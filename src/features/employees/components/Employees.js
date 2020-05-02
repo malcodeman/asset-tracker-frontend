@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import {
-  getEmployeesByWorkspaceId,
-  resetEmployees,
-} from "../actions/employeesActionCreators";
+import { getEmployeesByWorkspaceId } from "../../workspaces/actions/workspacesActionCreators";
+import { resetEmployees } from "../actions/employeesActionCreators";
 
 import AddEmployeeModal from "./AddEmployeeModal";
 import Table from "../../../components/table/Table";

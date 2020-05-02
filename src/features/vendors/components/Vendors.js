@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import {
-  getVendorsByWorkspaceId,
-  resetVendors,
-} from "../actions/vendorsActionCreators";
+import { getVendorsByWorkspaceId } from "../../workspaces/actions/workspacesActionCreators";
+import { resetVendors } from "../actions/vendorsActionCreators";
 
 import AddVendorModal from "./AddVendorModal";
 import Table from "../../../components/table/Table";
