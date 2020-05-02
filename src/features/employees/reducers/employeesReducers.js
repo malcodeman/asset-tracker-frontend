@@ -2,7 +2,10 @@ import {
   ADD_EMPLOYEE_SUCCESS,
   RESET_EMPLOYEES,
 } from "../actions/employeesActionTypes";
-import { GET_EMPLOYEES_BY_WORKSPACE_ID_SUCCESS } from "../../workspaces/actions/workspacesActionTypes";
+import {
+  GET_EMPLOYEES_BY_WORKSPACE_ID_SUCCESS,
+  RESET_WORKSPACE,
+} from "../../workspaces/actions/workspacesActionTypes";
 
 const initialState = {
   employees: [],
@@ -21,6 +24,11 @@ export default (state = initialState, action) => {
         employees: [...state.employees, action.payload],
       };
     case RESET_EMPLOYEES:
+      return {
+        ...state,
+        employees: [],
+      };
+    case RESET_WORKSPACE:
       return {
         ...state,
         employees: [],

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { ParagraphSmall } from "../../components/typography";
 import UsersIcon from "../../icons/Users";
@@ -8,6 +9,7 @@ import BoxIcon from "../../icons/Box";
 import TruckIcon from "../../icons/Truck";
 import MapPinIcon from "../../icons/MapPin";
 import constants from "../../constants";
+import { resetWorkspace } from "../workspaces/actions/workspacesActionCreators";
 
 const List = styled.div`
   display: flex;
@@ -53,7 +55,12 @@ const StyledMapPinIcon = styled(MapPinIcon)`
 
 function SideNavigation() {
   const params = useParams();
+  const dispatch = useDispatch();
   const workspaceId = params.workspaceId;
+
+  React.useEffect(() => {
+    dispatch(resetWorkspace());
+  }, [dispatch, workspaceId]);
 
   return (
     <List>

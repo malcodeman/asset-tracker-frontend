@@ -5,6 +5,7 @@ import {
   GET_EMPLOYEES_BY_WORKSPACE_ID_REQUEST,
   GET_LOCATIONS_BY_WORKSPACE_ID_REQUEST,
   GET_VENDORS_BY_WORKSPACE_ID_REQUEST,
+  RESET_WORKSPACE,
 } from "./workspacesActionTypes";
 
 function getAssetsByWorkspaceId(payload) {
@@ -49,6 +50,12 @@ function getVendorsByWorkspaceId(payload) {
   };
 }
 
+function resetWorkspace() {
+  return {
+    type: RESET_WORKSPACE,
+  };
+}
+
 export {
   getAssetsByWorkspaceId,
   getWorkspaces,
@@ -56,4 +63,5 @@ export {
   getEmployeesByWorkspaceId,
   getLocationsByWorkspaceId,
   getVendorsByWorkspaceId,
+  resetWorkspace,
 };

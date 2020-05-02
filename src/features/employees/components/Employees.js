@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { getEmployeesByWorkspaceId } from "../../workspaces/actions/workspacesActionCreators";
-import { resetEmployees } from "../actions/employeesActionCreators";
 
 import AddEmployeeModal from "./AddEmployeeModal";
 import Table from "../../../components/table/Table";
@@ -54,8 +53,6 @@ function Employees() {
 
   React.useEffect(() => {
     dispatch(getEmployeesByWorkspaceId(workspaceId));
-
-    return () => dispatch(resetEmployees());
   }, [dispatch, workspaceId]);
 
   return (

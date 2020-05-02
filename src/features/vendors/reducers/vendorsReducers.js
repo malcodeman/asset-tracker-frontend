@@ -2,7 +2,10 @@ import {
   ADD_VENDOR_SUCCESS,
   RESET_VENDORS,
 } from "../actions/vendorsActionTypes";
-import { GET_VENDORS_BY_WORKSPACE_ID_SUCCESS } from "../../workspaces/actions/workspacesActionTypes";
+import {
+  GET_VENDORS_BY_WORKSPACE_ID_SUCCESS,
+  RESET_WORKSPACE,
+} from "../../workspaces/actions/workspacesActionTypes";
 
 const initialState = {
   vendors: [],
@@ -21,6 +24,11 @@ export default (state = initialState, action) => {
         vendors: [...state.vendors, action.payload],
       };
     case RESET_VENDORS:
+      return {
+        ...state,
+        vendors: [],
+      };
+    case RESET_WORKSPACE:
       return {
         ...state,
         vendors: [],

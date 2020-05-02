@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { getLocationsByWorkspaceId } from "../../workspaces/actions/workspacesActionCreators";
-import { resetLocations } from "../actions/locationsActionCreators";
 import AddLocationModal from "./AddLocationModal";
 import Table from "../../../components/table/Table";
 
@@ -38,8 +37,6 @@ function Locations() {
 
   React.useEffect(() => {
     dispatch(getLocationsByWorkspaceId(workspaceId));
-
-    return () => dispatch(resetLocations());
   }, [dispatch, workspaceId]);
 
   return (

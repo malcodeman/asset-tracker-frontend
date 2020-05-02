@@ -2,7 +2,10 @@ import {
   ADD_LOCATION_SUCCESS,
   RESET_LOCATIONS,
 } from "../actions/locationsActionTypes";
-import { GET_LOCATIONS_BY_WORKSPACE_ID_SUCCESS } from "../../workspaces/actions/workspacesActionTypes";
+import {
+  GET_LOCATIONS_BY_WORKSPACE_ID_SUCCESS,
+  RESET_WORKSPACE,
+} from "../../workspaces/actions/workspacesActionTypes";
 
 const initialState = {
   locations: [],
@@ -21,6 +24,11 @@ export default (state = initialState, action) => {
         locations: [...state.locations, action.payload],
       };
     case RESET_LOCATIONS:
+      return {
+        ...state,
+        locations: [],
+      };
+    case RESET_WORKSPACE:
       return {
         ...state,
         locations: [],
