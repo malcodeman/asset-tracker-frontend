@@ -37,7 +37,7 @@ function Assets() {
       },
       {
         Header: "Location",
-        accessor: "location",
+        accessor: "location.name",
       },
       {
         Header: "Price",
@@ -49,7 +49,7 @@ function Assets() {
       },
       {
         Header: "Vendor",
-        accessor: "vendor",
+        accessor: "vendor.name",
       },
       {
         Header: "Purchase date",

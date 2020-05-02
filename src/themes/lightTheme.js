@@ -52,6 +52,8 @@ const theme = {
     tableDataBackgroundColor: "#FFFFFF",
     headerNavigationFill: "transparent",
     spinnerTrackFill: "#333333",
+    menuFill: "#FFFFFF",
+    menuFillHover: "#F6F6F6",
   },
   typography,
   sizing,

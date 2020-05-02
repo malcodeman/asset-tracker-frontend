@@ -7,33 +7,57 @@ import styled from "styled-components";
 import { FormControl } from "../../../components/form-control";
 import { Input } from "../../../components/input";
 import { Button } from "../../../components/button";
+import Select from "../../../components/select/Select";
 
 const StyledInput = styled(Input)`
   margin-bottom: 0.5rem;
 `;
 
+const StyledSelect = styled(Select)`
+  margin-bottom: 0.5rem;
+`;
+
 function AddAssetForm(props) {
-  const { onChange } = props;
+  const { onChange, locations, vendors } = props;
   const validationSchema = Yup.object().shape({
     tag: Yup.string().required("Tag is required"),
     description: Yup.string().required("Description is required"),
-    location: Yup.string().required("Location is required"),
+    locationId: Yup.string().required("Location is required"),
+    vendorId: Yup.string().required("Vendor is required"),
   });
   const formik = useFormik({
     initialValues: {
       tag: props.tag || "",
       description: props.description || "",
-      location: props.location || "",
+      locationId: props.locationId || "",
+      vendorId: props.vendorId || "",
     },
     validationSchema,
     onSubmit: () => {
-      props.onSubmit(formik);
+      const form = {
+        ...formik,
+        values: {
+          ...formik.values,
+          locationId: formik.values.locationId.id,
+          vendorId: formik.values.vendorId.id,
+        },
+      };
+
+      props.onSubmit(form);
     },
   });
 
   React.useEffect(() => {
     onChange(formik.values);
   }, [formik.values, onChange]);
+
+  function handleChange(field, e) {
+    formik.setFieldValue(field, e);
+  }
+
+  function handleBlur(field) {
+    formik.setFieldTouched(field, true);
+  }
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -63,14 +87,30 @@ function AddAssetForm(props) {
       </FormControl>
       <FormControl
         label="Location"
-        caption={formik.touched.location && formik.errors.location}
-        error={Boolean(formik.errors.location && formik.touched.location)}
+        caption={formik.touched.locationId && formik.errors.locationId}
+        error={Boolean(formik.errors.locationId && formik.touched.locationId)}
       >
-        <StyledInput
-          value={formik.values.location}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          name="location"
+        <StyledSelect
+          value={formik.values.locationId}
+          onChange={(e) => handleChange("locationId", e)}
+          onBlur={() => handleBlur("locationId")}
+          options={locations}
+          getOptionLabel={(option) => option.name}
+          getOptionValue={(option) => option.id}
+        />
+      </FormControl>
+      <FormControl
+        label="Vendor"
+        caption={formik.touched.vendorId && formik.errors.vendorId}
+        error={Boolean(formik.errors.vendorId && formik.touched.vendorId)}
+      >
+        <StyledSelect
+          value={formik.values.vendorId}
+          onChange={(e) => handleChange("vendorId", e)}
+          onBlur={() => handleBlur("vendorId")}
+          options={vendors}
+          getOptionLabel={(option) => option.name}
+          getOptionValue={(option) => option.id}
         />
       </FormControl>
       <Button type="submit" disabled={!formik.isValid || !formik.dirty}>
