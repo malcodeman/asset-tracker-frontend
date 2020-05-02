@@ -14,12 +14,14 @@ import Workspaces from "./features/layout/Workspaces";
 import history from "./routing/history";
 import themes from "./themes";
 import GlobalStyle from "./GlobalStyle";
+import hooks from "./hooks";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const darkTheme = hooks.usePreferredTheme();
 
   return (
-    <ThemeProvider theme={themes.light}>
+    <ThemeProvider theme={darkTheme ? themes.dark : themes.light}>
       <Router history={history}>
         {isLoggedIn ? (
           <>
