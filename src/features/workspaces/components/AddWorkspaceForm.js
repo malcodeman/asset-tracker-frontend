@@ -9,6 +9,7 @@ import "emoji-mart/css/emoji-mart.css";
 import { FormControl } from "../../../components/form-control";
 import { Input } from "../../../components/input";
 import { Button } from "../../../components/button";
+import hooks from "../../../hooks";
 
 const StyledInput = styled(Input)`
   margin-bottom: 0.5rem;
@@ -30,6 +31,7 @@ function AddWorkspaceForm(props) {
       props.onSubmit(formik);
     },
   });
+  const darkTheme = hooks.usePreferredTheme();
 
   function onSelect({ native }) {
     formik.setFieldValue("emoji", native);
@@ -62,6 +64,7 @@ function AddWorkspaceForm(props) {
           color={theme.colors.accent}
           showPreview={false}
           showSkinTones={false}
+          theme={darkTheme ? "dark" : "light"}
         />
       </FormControl>
       <Button type="submit" disabled={!formik.isValid || !formik.dirty}>
