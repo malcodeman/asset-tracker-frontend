@@ -47,6 +47,7 @@ function AddWorkspaceForm(props) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           name="name"
+          autoFocus={true}
         />
       </FormControl>
       <FormControl

@@ -38,6 +38,7 @@ function AddVendorForm(props) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           name="name"
+          autoFocus={true}
         />
       </FormControl>
       <Button type="submit" disabled={!formik.isValid || !formik.dirty}>

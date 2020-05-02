@@ -71,6 +71,7 @@ function AddAssetForm(props) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           name="tag"
+          autoFocus={true}
         />
       </FormControl>
       <FormControl
