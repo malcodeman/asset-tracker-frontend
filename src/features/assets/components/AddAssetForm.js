@@ -18,7 +18,7 @@ const StyledSelect = styled(Select)`
 `;
 
 function AddAssetForm(props) {
-  const { onChange, locations, vendors } = props;
+  const { onChange, locations, employees, vendors } = props;
   const validationSchema = Yup.object().shape({
     tag: Yup.string().required("Tag is required"),
     description: Yup.string().required("Description is required"),
@@ -40,6 +40,7 @@ function AddAssetForm(props) {
           ...formik.values,
           locationId: formik.values.locationId.id,
           vendorId: formik.values.vendorId.id,
+          usedBy: formik.values.usedBy.map((item) => item.id),
         },
       };
 
@@ -96,6 +97,22 @@ function AddAssetForm(props) {
           onChange={(e) => handleChange("locationId", e)}
           onBlur={() => handleBlur("locationId")}
           options={locations}
+          getOptionLabel={(option) => option.name}
+          getOptionValue={(option) => option.id}
+        />
+      </FormControl>
+      <FormControl
+        label="Used by"
+        caption={formik.touched.usedBy && formik.errors.usedBy}
+        error={Boolean(formik.errors.usedBy && formik.touched.usedBy)}
+      >
+        <StyledSelect
+          isMulti
+          backspaceRemovesValue
+          value={formik.values.usedBy}
+          onChange={(e) => handleChange("usedBy", e)}
+          onBlur={() => handleBlur("usedBy")}
+          options={employees}
           getOptionLabel={(option) => option.name}
           getOptionValue={(option) => option.id}
         />

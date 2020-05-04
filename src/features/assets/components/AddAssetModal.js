@@ -7,6 +7,7 @@ import AddAssetForm from "./AddAssetForm";
 import { addAsset } from "../actions/assetsActionCreators";
 import {
   getLocationsByWorkspaceId,
+  getEmployeesByWorkspaceId,
   getVendorsByWorkspaceId,
 } from "../../workspaces/actions/workspacesActionCreators";
 
@@ -16,6 +17,7 @@ function AddAssetModal(props) {
   const initialName = "Unnamed record";
   const [name, setName] = React.useState(initialName);
   const locations = useSelector((state) => state.locations.locations);
+  const employees = useSelector((state) => state.employees.employees);
   const vendors = useSelector((state) => state.vendors.vendors);
 
   function handleSubmit(formik) {
@@ -46,6 +48,12 @@ function AddAssetModal(props) {
   }, [isOpen, dispatch, workspaceId, locations.length]);
 
   React.useEffect(() => {
+    if (isOpen && !employees.length) {
+      dispatch(getEmployeesByWorkspaceId(workspaceId));
+    }
+  }, [isOpen, dispatch, workspaceId, employees.length]);
+
+  React.useEffect(() => {
     if (isOpen && !vendors.length) {
       dispatch(getVendorsByWorkspaceId(workspaceId));
     }
@@ -59,6 +67,7 @@ function AddAssetModal(props) {
           onSubmit={handleSubmit}
           onChange={handleOnChange}
           locations={locations}
+          employees={employees}
           vendors={vendors}
         />
       </ModalBody>

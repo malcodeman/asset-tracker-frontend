@@ -54,6 +54,8 @@ const theme = {
     spinnerTrackFill: "#333333",
     menuFill: "#FFFFFF",
     menuFillHover: "#F6F6F6",
+    tagPrimaryLightFont: "#757575",
+    tagPrimaryLightBackground: "#F6F6F6",
   },
   typography,
   sizing,

@@ -6,12 +6,17 @@ import { useParams } from "react-router-dom";
 import { getAssetsByWorkspaceId } from "../../workspaces/actions/workspacesActionCreators";
 import AddAssetModal from "./AddAssetModal";
 import Table from "../../../components/table/Table";
+import Tag from "../../../components/tag/Tag";
 
 import hooks from "../../../hooks";
 import utils from "../../../utils";
 
 const Wrapper = styled.div`
   height: 100%;
+`;
+
+const StyledTag = styled(Tag)`
+  margin: 0.25rem;
 `;
 
 function Assets() {
@@ -44,11 +49,14 @@ function Assets() {
       },
       {
         Header: "Used by",
-        accessor: "usedBy",
+        accessor: "employees",
+        Cell: ({ value }) =>
+          value.map((item) => <StyledTag key={item.id}>{item.name}</StyledTag>),
       },
       {
         Header: "Vendor",
         accessor: "vendor.name",
+        Cell: ({ value }) => <StyledTag>{value}</StyledTag>,
       },
       {
         Header: "Purchase date",
