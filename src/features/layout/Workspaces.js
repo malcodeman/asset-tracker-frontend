@@ -8,6 +8,7 @@ import PlusIcon from "../../icons/Plus";
 import { getWorkspaces } from "../workspaces/actions/workspacesActionCreators";
 import constants from "../../constants";
 import AddWorkspaceModal from "../workspaces/components/AddWorkspaceModal";
+import { getMyself } from "../users/actions/usersActionCreators";
 
 const List = styled.div`
   display: flex;
@@ -62,6 +63,10 @@ function Workspaces() {
 
   React.useEffect(() => {
     dispatch(getWorkspaces());
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    dispatch(getMyself());
   }, [dispatch]);
 
   return (

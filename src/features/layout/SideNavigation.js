@@ -10,6 +10,7 @@ import TruckIcon from "../../icons/Truck";
 import MapPinIcon from "../../icons/MapPin";
 import constants from "../../constants";
 import { resetWorkspace } from "../workspaces/actions/workspacesActionCreators";
+import Popover from "./Popover";
 
 const List = styled.div`
   display: flex;
@@ -64,6 +65,7 @@ function SideNavigation() {
 
   return (
     <List>
+      <Popover workspaceId={workspaceId} />
       <ListItem to={`/workspaces/${workspaceId}`} exact>
         <StyledBoxIcon />
         <ParagraphSmall>Assets</ParagraphSmall>
