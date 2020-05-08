@@ -1292,10 +1292,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@malcodeman/react-popover@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@malcodeman/react-popover/-/react-popover-1.0.2.tgz#2ccb7b95698e4fa846ccec8a4b37afc7163d1567"
-  integrity sha512-SKlB++eoXfxHFVJ9pVTZVntZWrqSWTcfruf62TF+2vbFuZYA71kbGybjZYGVhlixsznXlUCeodCsEeRXkOIphg==
+"@malcodeman/react-popover@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@malcodeman/react-popover/-/react-popover-1.1.6.tgz#560698560708d9466a365d2ef77c6240c5f92ad5"
+  integrity sha512-1C1qLUmW4/LaW0iwOegDL3f4xfCn1UQy14cH7sXI4VVm+1NkjShIiqaUks+fQW0bLKAlCHlRnZJLzOlFDoYfMg==
   dependencies:
     "@popperjs/core" "^2.2.2"
     react-popper "^2.2.1"
@@ -8839,9 +8839,9 @@ react-fast-compare@^2.0.1:
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
 react-fast-compare@^3.0.1:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.0.2.tgz#8b0bfa93a049ec1eef9d54ab5e5c6036c317144d"
-  integrity sha512-1fBw8Efm6fb1blbRorZcO3OqzWgxYWxXzlaNeqEVXcrDdyFzeqygrPVU6qrPuqnqYMpUJVkQBdDgDJQTmCXp+Q==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.1.0.tgz#0f2d65cc65ea386980e70bc7bacd4a6ea4089294"
+  integrity sha512-FKh5v1C/NOJSEFmg0v1V1B72ysVI+b+/n80D3lRejD8SKGTwVrYygupeR2YKvfTjrVmkC2GGqWXBasUnUjupkw==
 
 react-feather@^2.0.8:
   version "2.0.8"
