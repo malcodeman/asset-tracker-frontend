@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import { Modal } from "@malcodeman/react-modal";
 
-import { Modal, ModalHeader, ModalBody } from "../../../components/modal";
+import { Dialog, ModalHeader, ModalBody } from "../../../components/modal";
 
 import { addEmployee } from "../actions/employeesActionCreators";
 import AddEmployeeForm from "./AddEmployeeForm";
@@ -20,10 +21,12 @@ function AddEmployeeModal(props) {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalHeader>Add employee</ModalHeader>
-      <ModalBody>
-        <AddEmployeeForm onSubmit={handleSubmit} />
-      </ModalBody>
+      <Dialog>
+        <ModalHeader>Add employee</ModalHeader>
+        <ModalBody>
+          <AddEmployeeForm onSubmit={handleSubmit} />
+        </ModalBody>
+      </Dialog>
     </Modal>
   );
 }

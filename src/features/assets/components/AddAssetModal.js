@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import { Modal } from "@malcodeman/react-modal";
 
-import { Modal, ModalHeader, ModalBody } from "../../../components/modal";
+import { Dialog, ModalHeader, ModalBody } from "../../../components/modal";
 import AddAssetForm from "./AddAssetForm";
 import { addAsset } from "../actions/assetsActionCreators";
 import {
@@ -61,16 +62,18 @@ function AddAssetModal(props) {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalHeader>{name}</ModalHeader>
-      <ModalBody>
-        <AddAssetForm
-          onSubmit={handleSubmit}
-          onChange={handleOnChange}
-          locations={locations}
-          employees={employees}
-          vendors={vendors}
-        />
-      </ModalBody>
+      <Dialog>
+        <ModalHeader>{name}</ModalHeader>
+        <ModalBody>
+          <AddAssetForm
+            onSubmit={handleSubmit}
+            onChange={handleOnChange}
+            locations={locations}
+            employees={employees}
+            vendors={vendors}
+          />
+        </ModalBody>
+      </Dialog>
     </Modal>
   );
 }

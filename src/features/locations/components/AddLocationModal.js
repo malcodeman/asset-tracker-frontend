@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import { Modal } from "@malcodeman/react-modal";
 
-import { Modal, ModalHeader, ModalBody } from "../../../components/modal";
+import { Dialog, ModalHeader, ModalBody } from "../../../components/modal";
 
 import { addLocation } from "../actions/locationsActionCreators";
 import AddLocationForm from "./AddLocationForm";
@@ -20,10 +21,12 @@ function AddLocationModal(props) {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalHeader>Add location</ModalHeader>
-      <ModalBody>
-        <AddLocationForm onSubmit={handleSubmit} />
-      </ModalBody>
+      <Dialog>
+        <ModalHeader>Add location</ModalHeader>
+        <ModalBody>
+          <AddLocationForm onSubmit={handleSubmit} />
+        </ModalBody>
+      </Dialog>
     </Modal>
   );
 }

@@ -2,8 +2,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Modal } from "@malcodeman/react-modal";
 
-import { Modal, ModalHeader, ModalBody } from "../../../components/modal";
+import { Dialog, ModalHeader, ModalBody } from "../../../components/modal";
 import AddWorkspaceForm from "./AddWorkspaceForm";
 import { addWorkspace } from "../actions/workspacesActionCreators";
 
@@ -26,10 +27,12 @@ function AddWorkspaceModal(props) {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalHeader>Create workspace</ModalHeader>
-      <ModalBody>
-        <AddWorkspaceForm onSubmit={handleSubmit} />
-      </ModalBody>
+      <Dialog>
+        <ModalHeader>Create workspace</ModalHeader>
+        <ModalBody>
+          <AddWorkspaceForm onSubmit={handleSubmit} />
+        </ModalBody>
+      </Dialog>
     </Modal>
   );
 }

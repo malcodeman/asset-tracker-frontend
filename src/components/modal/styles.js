@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const ModalHeader = styled.div`
   margin: 2rem 1.5rem 1rem 1.5rem;
-  color: ${props => props.theme.colors.foreground};
-  ${props => props.theme.typography.font550};
+  color: ${(props) => props.theme.colors.foreground};
+  ${(props) => props.theme.typography.font550};
 `;
 
 export const ModalBody = styled.div`
   margin: 1rem 1.5rem;
-  color: ${props => props.theme.colors.foregroundAlt};
-  ${props => props.theme.typography.font200};
+  color: ${(props) => props.theme.colors.foregroundAlt};
+  ${(props) => props.theme.typography.font200};
 `;
 
 export const ModalFooter = styled.div`
@@ -17,5 +17,12 @@ export const ModalFooter = styled.div`
   margin: 0 1.5rem;
   text-align: right;
   border-top: 1px solid rgba(0, 0, 0, 0.5);
-  ${props => props.theme.typography.font200};
+  ${(props) => props.theme.typography.font200};
+`;
+
+export const Dialog = styled.div`
+  margin: 1rem;
+  width: ${(props) => props.size || "500px"};
+  border-radius: ${(props) => props.theme.borders.radius200};
+  background-color: ${(props) => props.theme.colors.backgroundPrimary};
 `;
