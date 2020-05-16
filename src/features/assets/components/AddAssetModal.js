@@ -61,7 +61,7 @@ function AddAssetModal(props) {
   }, [isOpen, dispatch, workspaceId, vendors.length]);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} dismissOnClickOutside={false}>
       <Dialog>
         <ModalHeader>{name}</ModalHeader>
         <ModalBody>

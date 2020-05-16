@@ -1292,10 +1292,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@malcodeman/react-modal@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@malcodeman/react-modal/-/react-modal-1.0.1.tgz#161b1b8181ee71b50c0fbe910e101bf139295ffc"
-  integrity sha512-YpMf0oko6CcszJ5ntYqLI9XHKaBDYhQSh8d1CEF5JEtCE/70zGETHRw5wZ6eq8Ym/LdhmVYuIIWebmZdRTB8/g==
+"@malcodeman/react-modal@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@malcodeman/react-modal/-/react-modal-1.0.3.tgz#b393a445d5f544858c9d4a30e39baa8e7b34f781"
+  integrity sha512-Aww4vUF50FE/Dh70KBufd0llgHmicZ4pvRmYJNeA9lK0qRrr65hha5tUy3Lx91/17olbivroGM7VThF1VrWj4g==
 
 "@malcodeman/react-popover@^1.1.6":
   version "1.1.6"
