@@ -62,7 +62,7 @@ const StyledLogOut = styled(LogOut)`
 `;
 
 function Popover(props) {
-  const { workspaceId } = props;
+  const { workspaceId, openSettings } = props;
   const history = useHistory();
   const dispatch = useDispatch();
   const workspaces = useSelector((state) => state.workspaces.workspaces);
@@ -70,13 +70,18 @@ function Popover(props) {
     workspaces.find((item) => item.id === Number(workspaceId)) || {};
   const myself = useSelector((state) => state.users.myself);
 
-  function handleLogOut() {
-    dispatch(logout());
-    localStorage.removeItem("token");
-    history.push("/");
-  }
+  function content({ close }) {
+    function handleSettings() {
+      openSettings();
+      close();
+    }
 
-  function content() {
+    function handleLogOut() {
+      dispatch(logout());
+      localStorage.removeItem("token");
+      history.push("/");
+    }
+
     return (
       <Overlay>
         <Menu>
@@ -86,8 +91,8 @@ function Popover(props) {
           <MenuItem>
             <ParagraphSmall>Tools</ParagraphSmall>
           </MenuItem>
-          <MenuItem>
-            <ParagraphSmall>Help</ParagraphSmall>
+          <MenuItem onClick={handleSettings}>
+            <ParagraphSmall>Settings</ParagraphSmall>
           </MenuItem>
           <MenuItem onClick={handleLogOut}>
             <StyledLogOut size={16} />

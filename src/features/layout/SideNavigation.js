@@ -11,6 +11,7 @@ import MapPinIcon from "../../icons/MapPin";
 import constants from "../../constants";
 import { resetWorkspace } from "../workspaces/actions/workspacesActionCreators";
 import Popover from "./Popover";
+import SettingsModal from "../settings/components/SettingsModal";
 
 const List = styled.div`
   display: flex;
@@ -58,31 +59,38 @@ function SideNavigation() {
   const params = useParams();
   const dispatch = useDispatch();
   const workspaceId = params.workspaceId;
+  const [settings, setSettings] = React.useState(false);
 
   React.useEffect(() => {
     dispatch(resetWorkspace());
   }, [dispatch, workspaceId]);
 
   return (
-    <List>
-      <Popover workspaceId={workspaceId} />
-      <ListItem to={`/workspaces/${workspaceId}`} exact>
-        <StyledBoxIcon />
-        <ParagraphSmall>Assets</ParagraphSmall>
-      </ListItem>
-      <ListItem to={`/workspaces/${workspaceId}/employees`}>
-        <StyledUsersIcon />
-        <ParagraphSmall>Employees</ParagraphSmall>
-      </ListItem>
-      <ListItem to={`/workspaces/${workspaceId}/vendors`}>
-        <StyledTruckIcon />
-        <ParagraphSmall>Vendors</ParagraphSmall>
-      </ListItem>
-      <ListItem to={`/workspaces/${workspaceId}/locations`}>
-        <StyledMapPinIcon />
-        <ParagraphSmall>Locations</ParagraphSmall>
-      </ListItem>
-    </List>
+    <>
+      <List>
+        <Popover
+          workspaceId={workspaceId}
+          openSettings={() => setSettings(true)}
+        />
+        <ListItem to={`/workspaces/${workspaceId}`} exact>
+          <StyledBoxIcon />
+          <ParagraphSmall>Assets</ParagraphSmall>
+        </ListItem>
+        <ListItem to={`/workspaces/${workspaceId}/employees`}>
+          <StyledUsersIcon />
+          <ParagraphSmall>Employees</ParagraphSmall>
+        </ListItem>
+        <ListItem to={`/workspaces/${workspaceId}/vendors`}>
+          <StyledTruckIcon />
+          <ParagraphSmall>Vendors</ParagraphSmall>
+        </ListItem>
+        <ListItem to={`/workspaces/${workspaceId}/locations`}>
+          <StyledMapPinIcon />
+          <ParagraphSmall>Locations</ParagraphSmall>
+        </ListItem>
+      </List>
+      <SettingsModal isOpen={settings} onClose={() => setSettings(false)} />
+    </>
   );
 }
 
