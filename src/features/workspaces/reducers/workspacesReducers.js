@@ -1,6 +1,7 @@
 import {
   GET_WORKSPACES_SUCCESS,
   ADD_WORKSPACE_SUCCESS,
+  UPDATE_WORKSPACE_SUCCESS,
 } from "../actions/workspacesActionTypes";
 
 const initialState = {
@@ -18,6 +19,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         workspaces: [...state.workspaces, action.payload],
+      };
+    case UPDATE_WORKSPACE_SUCCESS:
+      return {
+        ...state,
+        workspaces: state.workspaces.map((item) => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          }
+          return item;
+        }),
       };
     default:
       return state;

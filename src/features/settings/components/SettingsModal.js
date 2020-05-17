@@ -10,6 +10,7 @@ import {
   ParagraphXSmall,
 } from "../../../components/typography";
 import Account from "./Account";
+import WorkspaceSettings from "./WorkspaceSettings";
 
 const Grid = styled.div`
   display: grid;
@@ -75,7 +76,7 @@ function SettingsModal(props) {
       case 1:
         return <p>Notifications</p>;
       case 2:
-        return <p>Settings</p>;
+        return <WorkspaceSettings />;
       case 3:
         return <p>Members</p>;
       case 4:

@@ -1,35 +1,39 @@
 import axios from "../http";
 
-function signup(params) {
-  return axios.post(`/auth/signup`, params);
+function signup(data) {
+  return axios.post(`/auth/signup`, data);
 }
 
-function signin(params) {
-  return axios.post(`/auth/signin`, params);
+function signin(data) {
+  return axios.post(`/auth/signin`, data);
 }
 
-function addWorkspace(params) {
-  return axios.post(`/workspaces`, params);
+function addWorkspace(data) {
+  return axios.post(`/workspaces`, data);
 }
 
-function addAsset(params) {
-  return axios.post(`/assets`, params);
+function addAsset(data) {
+  return axios.post(`/assets`, data);
 }
 
-function updateMyself(params) {
-  return axios.put(`/users/myself`, params);
+function updateMyself(data) {
+  return axios.put(`/users/myself`, data);
 }
 
-function addVendor(params) {
-  return axios.post(`/vendors`, params);
+function addVendor(data) {
+  return axios.post(`/vendors`, data);
 }
 
-function addEmployee(params) {
-  return axios.post(`/employees`, params);
+function addEmployee(data) {
+  return axios.post(`/employees`, data);
 }
 
-function addLocation(params) {
-  return axios.post(`/locations`, params);
+function addLocation(data) {
+  return axios.post(`/locations`, data);
+}
+
+function updateWorkspace(id, data) {
+  return axios.put(`/workspaces/${id}`, data);
 }
 
 export {
@@ -41,6 +45,7 @@ export {
   addVendor,
   addEmployee,
   addLocation,
+  updateWorkspace,
 };
 
 export default {
@@ -52,4 +57,5 @@ export default {
   addVendor,
   addEmployee,
   addLocation,
+  updateWorkspace,
 };

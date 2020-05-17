@@ -20,6 +20,9 @@ import {
   GET_VENDORS_BY_WORKSPACE_ID_FAILURE,
   GET_VENDORS_BY_WORKSPACE_ID_REQUEST,
   GET_VENDORS_BY_WORKSPACE_ID_SUCCESS,
+  UPDATE_WORKSPACE_REQUEST,
+  UPDATE_WORKSPACE_FAILURE,
+  UPDATE_WORKSPACE_SUCCESS,
 } from "../actions/workspacesActionTypes";
 
 function* getWorkspaces() {
@@ -105,6 +108,27 @@ function* getVendorsByWorkspaceId(action) {
   }
 }
 
+function* updateWorkspace(action) {
+  const { formik } = action.meta;
+
+  try {
+    const data = yield call(
+      api.mutations.updateWorkspace,
+      action.payload.workspaceId,
+      { values: action.payload.values }
+    );
+
+    yield put({
+      type: UPDATE_WORKSPACE_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    yield put({ type: UPDATE_WORKSPACE_FAILURE, error });
+  } finally {
+    formik.setSubmitting(false);
+  }
+}
+
 const saga = function* () {
   yield takeLatest(GET_WORKSPACES_REQUEST, getWorkspaces);
   yield takeLatest(GET_ASSETS_BY_WORKSPACE_ID_REQUEST, getAssetsByWorkspaceId);
@@ -121,6 +145,7 @@ const saga = function* () {
     GET_VENDORS_BY_WORKSPACE_ID_REQUEST,
     getVendorsByWorkspaceId
   );
+  yield takeLatest(UPDATE_WORKSPACE_REQUEST, updateWorkspace);
 };
 
 export default saga;

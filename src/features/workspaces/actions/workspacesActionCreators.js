@@ -6,6 +6,7 @@ import {
   GET_LOCATIONS_BY_WORKSPACE_ID_REQUEST,
   GET_VENDORS_BY_WORKSPACE_ID_REQUEST,
   RESET_WORKSPACE,
+  UPDATE_WORKSPACE_REQUEST,
 } from "./workspacesActionTypes";
 
 function getAssetsByWorkspaceId(payload) {
@@ -56,6 +57,14 @@ function resetWorkspace() {
   };
 }
 
+function updateWorkspace(payload, meta) {
+  return {
+    payload,
+    meta,
+    type: UPDATE_WORKSPACE_REQUEST,
+  };
+}
+
 export {
   getAssetsByWorkspaceId,
   getWorkspaces,
@@ -64,4 +73,5 @@ export {
   getLocationsByWorkspaceId,
   getVendorsByWorkspaceId,
   resetWorkspace,
+  updateWorkspace,
 };
