@@ -29,6 +29,10 @@ const StyledSelect = styled(Select)`
   width: 86px;
 `;
 
+const StyledInput = styled(Input)`
+  width: 86px;
+`;
+
 const NoWrapParagraph = styled(ParagraphXSmall)`
   white-space: nowrap;
 `;
@@ -88,7 +92,7 @@ function Pagination(props) {
       </Item>
       <Item>
         <NoWrapParagraph>Jump to page:</NoWrapParagraph>
-        <Input
+        <StyledInput
           value={pageIndex}
           type="number"
           onChange={handleJumpToPageOnChange}
