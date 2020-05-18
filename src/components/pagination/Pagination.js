@@ -12,6 +12,7 @@ const Container = styled.div`
   display: flex;
   gap: 1rem;
   padding: 0.25rem;
+  background-color: ${(props) => props.theme.colors.backgroundPrimary};
 `;
 
 const Emoji = styled.span`
@@ -49,6 +50,7 @@ function Pagination(props) {
     pageSize,
     pageSizeOptions,
     count,
+    pageCount,
   } = props;
 
   function handlePageSizeOptionsOnChange({ value }) {
@@ -65,6 +67,24 @@ function Pagination(props) {
     <Container>
       <Item>
         <ParagraphXSmall>{count} Results</ParagraphXSmall>
+      </Item>
+      <Item>
+        <ParagraphXSmall>Show:</ParagraphXSmall>
+        <StyledSelect
+          value={{ label: pageSize, value: pageSize }}
+          options={pageSizeOptions}
+          onChange={handlePageSizeOptionsOnChange}
+        />
+      </Item>
+      <Item>
+        <Emoji
+          role="img"
+          aria-label=""
+          disabled={!canPreviousPage}
+          onClick={() => gotoPage(0)}
+        >
+          {"⏮️"}
+        </Emoji>
         <Emoji
           role="img"
           aria-label=""
@@ -81,17 +101,17 @@ function Pagination(props) {
         >
           {"➡️"}
         </Emoji>
+        <Emoji
+          role="img"
+          aria-label=""
+          disabled={!canNextPage}
+          onClick={() => gotoPage(pageCount - 1)}
+        >
+          {"⏭️"}
+        </Emoji>
       </Item>
       <Item>
-        <ParagraphXSmall>Show:</ParagraphXSmall>
-        <StyledSelect
-          value={{ label: pageSize, value: pageSize }}
-          options={pageSizeOptions}
-          onChange={handlePageSizeOptionsOnChange}
-        />
-      </Item>
-      <Item>
-        <NoWrapParagraph>Jump to page:</NoWrapParagraph>
+        <NoWrapParagraph>Jump to:</NoWrapParagraph>
         <StyledInput
           value={pageIndex}
           type="number"

@@ -8,7 +8,7 @@ import constants from "../../constants";
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: auto 48px 1fr;
+  grid-template-rows: auto auto 1fr;
   height: 100vh;
   background-color: ${(props) => props.theme.colors.backgroundPrimary};
   @media (min-width: ${constants.BREAKPOINTS.MEDIUM_DEVICES}) {

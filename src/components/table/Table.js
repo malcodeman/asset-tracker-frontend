@@ -88,6 +88,7 @@ function Table(props) {
     setPageSize,
     canPreviousPage,
     canNextPage,
+    pageCount,
   } = useTable(
     {
       columns,
@@ -111,6 +112,7 @@ function Table(props) {
         pageIndex={pageIndex}
         pageSize={pageSize}
         count={data.length}
+        pageCount={pageCount}
       />
       <div {...getTableProps()}>
         <Head>
