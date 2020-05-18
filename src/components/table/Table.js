@@ -5,7 +5,10 @@ import {
   useFlexLayout,
   useResizeColumns,
   useSortBy,
+  usePagination,
 } from "react-table";
+
+import Pagination from "../pagination/Pagination";
 
 const Container = styled.div`
   display: block;
@@ -76,8 +79,15 @@ function Table(props) {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
+    page,
     prepareRow,
+    state: { pageIndex, pageSize },
+    gotoPage,
+    previousPage,
+    nextPage,
+    setPageSize,
+    canPreviousPage,
+    canNextPage,
   } = useTable(
     {
       columns,
@@ -85,11 +95,23 @@ function Table(props) {
     },
     useFlexLayout,
     useResizeColumns,
-    useSortBy
+    useSortBy,
+    usePagination
   );
 
   return (
     <Container>
+      <Pagination
+        previousPage={previousPage}
+        nextPage={nextPage}
+        gotoPage={gotoPage}
+        setPageSize={setPageSize}
+        canPreviousPage={canPreviousPage}
+        canNextPage={canNextPage}
+        pageIndex={pageIndex}
+        pageSize={pageSize}
+        count={data.length}
+      />
       <div {...getTableProps()}>
         <Head>
           {headerGroups.map((headerGroup) => (
@@ -115,7 +137,7 @@ function Table(props) {
           ))}
         </Head>
         <Body {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {page.map((row) => {
             prepareRow(row);
             return (
               <div {...row.getRowProps()}>
