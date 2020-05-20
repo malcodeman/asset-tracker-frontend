@@ -113,7 +113,7 @@ function Pagination(props) {
       <Item>
         <NoWrapParagraph>Jump to:</NoWrapParagraph>
         <StyledInput
-          value={pageIndex}
+          value={String(pageIndex)}
           type="number"
           onChange={handleJumpToPageOnChange}
         />

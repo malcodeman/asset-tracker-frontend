@@ -1,9 +1,9 @@
-function loadState() {
+function loadState(initialState) {
   try {
     const serializedState = localStorage.getItem("state");
 
     if (serializedState === null) {
-      return undefined;
+      return initialState;
     }
     return JSON.parse(serializedState);
   } catch (error) {

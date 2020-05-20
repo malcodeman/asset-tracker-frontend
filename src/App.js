@@ -15,13 +15,27 @@ import history from "./routing/history";
 import themes from "./themes";
 import GlobalStyle from "./GlobalStyle";
 import hooks from "./hooks";
+import constants from "./constants";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const darkTheme = hooks.usePreferredTheme();
+  const preferredDarkTheme = hooks.usePreferredTheme();
+  const theme = useSelector((state) => state.settings.theme);
+
+  function handleTheme() {
+    switch (theme.value) {
+      case constants.THEMES.LIGHT.value:
+        return themes.light;
+      case constants.THEMES.DARK.value:
+        return themes.dark;
+      case constants.THEMES.AUTO.value:
+      default:
+        return preferredDarkTheme ? themes.dark : themes.light;
+    }
+  }
 
   return (
-    <ThemeProvider theme={darkTheme ? themes.dark : themes.light}>
+    <ThemeProvider theme={handleTheme}>
       <Router history={history}>
         {isLoggedIn ? (
           <>

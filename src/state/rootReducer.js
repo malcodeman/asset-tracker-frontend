@@ -7,6 +7,7 @@ import vendors from "../features/vendors/reducers/vendorsReducers";
 import employees from "../features/employees/reducers/employeesReducers";
 import locations from "../features/locations/reducers/locationsReducers";
 import workspaces from "../features/workspaces/reducers/workspacesReducers";
+import settings from "../features/settings/reducers/settingsReducers";
 
 const rootReducer = combineReducers({
   auth,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   employees,
   locations,
   workspaces,
+  settings,
 });
 
 export default rootReducer;

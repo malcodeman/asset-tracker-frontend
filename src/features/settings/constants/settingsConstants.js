@@ -1,4 +1,12 @@
-import { User, Inbox, Settings, Users, Star, Shield } from "react-feather";
+import {
+  User,
+  Inbox,
+  Moon,
+  Settings,
+  Users,
+  Star,
+  Shield,
+} from "react-feather";
 
 const NAVIGATION = {
   me: [
@@ -12,25 +20,30 @@ const NAVIGATION = {
       title: "My notifications",
       icon: Inbox,
     },
+    {
+      id: 2,
+      title: "Themes",
+      icon: Moon,
+    },
   ],
   workspace: [
     {
-      id: 2,
+      id: 3,
       title: "Settings",
       icon: Settings,
     },
     {
-      id: 3,
+      id: 4,
       title: "Members",
       icon: Users,
     },
     {
-      id: 4,
+      id: 5,
       title: "Upgrade",
       icon: Star,
     },
     {
-      id: 5,
+      id: 6,
       title: "Security",
       icon: Shield,
     },

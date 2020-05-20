@@ -11,6 +11,7 @@ import {
 } from "../../../components/typography";
 import Account from "./Account";
 import WorkspaceSettings from "./WorkspaceSettings";
+import Themes from "./Themes";
 
 const Grid = styled.div`
   display: grid;
@@ -76,12 +77,14 @@ function SettingsModal(props) {
       case 1:
         return <p>Notifications</p>;
       case 2:
-        return <WorkspaceSettings />;
+        return <Themes />;
       case 3:
-        return <p>Members</p>;
+        return <WorkspaceSettings />;
       case 4:
-        return <p>Upgrade</p>;
+        return <p>Members</p>;
       case 5:
+        return <p>Upgrade</p>;
+      case 6:
         return <p>Security</p>;
     }
   }

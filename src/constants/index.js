@@ -1,8 +1,18 @@
 const IS_PROD_ENV = process.env.NODE_ENV === "production";
 const API_URL = process.env.REACT_APP_API_URL;
 const THEMES = {
-  DARK: "DARK",
-  LIGHT: "LIGHT",
+  AUTO: {
+    value: "AUTO",
+    label: "Auto",
+  },
+  DARK: {
+    value: "DARK",
+    label: "Dark",
+  },
+  LIGHT: {
+    value: "LIGHT",
+    label: "Light",
+  },
 };
 const NAME = "Tracker";
 const BREAKPOINTS = {
