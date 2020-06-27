@@ -5,6 +5,8 @@
 
 Software for maintenance & facilities.
 
+![Screenshot](docs/images/screenshot.png)
+
 ## Getting started
 
 First, clone and run the api:
