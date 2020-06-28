@@ -4,12 +4,14 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import styled, { useTheme } from "styled-components";
 import { Picker } from "emoji-mart";
+import { useSelector } from "react-redux";
+
 import "emoji-mart/css/emoji-mart.css";
 
 import { FormControl } from "../../../components/form-control";
 import { Input } from "../../../components/input";
 import { Button } from "../../../components/button";
-import hooks from "../../../hooks";
+import constants from "../../../constants";
 
 const StyledInput = styled(Input)`
   margin-bottom: 0.5rem;
@@ -32,7 +34,19 @@ function WorkspaceSettingsForm(props) {
       props.onSubmit(formik);
     },
   });
-  const darkTheme = hooks.usePreferredTheme();
+  const settingsTheme = useSelector((state) => state.settings.theme);
+
+  function handleTheme() {
+    switch (settingsTheme.value) {
+      case constants.THEMES.LIGHT.value:
+        return "light";
+      case constants.THEMES.DARK.value:
+        return "dark";
+      case constants.THEMES.AUTO.value:
+      default:
+        return "auto";
+    }
+  }
 
   function onSelect({ native }) {
     formik.setFieldValue("emoji", native);
@@ -65,7 +79,7 @@ function WorkspaceSettingsForm(props) {
           color={theme.colors.accent}
           showPreview={false}
           showSkinTones={false}
-          theme={darkTheme ? "dark" : "light"}
+          theme={handleTheme()}
         />
       </FormControl>
       <Button type="submit" disabled={!formik.isValid || !formik.dirty}>
