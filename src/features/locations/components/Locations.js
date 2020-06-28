@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { getLocationsByWorkspaceId } from "../../workspaces/actions/workspacesActionCreators";
 import AddLocationModal from "./AddLocationModal";
 import Table from "../../../components/table/Table";
+import Plus from "../../common/Plus";
 
 import hooks from "../../../hooks";
 
@@ -47,6 +48,7 @@ function Locations() {
         workspaceId={workspaceId}
         onClose={onClose}
       />
+      <Plus onClick={() => setIsOpen(true)} />
     </Wrapper>
   );
 }

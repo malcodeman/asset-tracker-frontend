@@ -7,6 +7,7 @@ import { getVendorsByWorkspaceId } from "../../workspaces/actions/workspacesActi
 
 import AddVendorModal from "./AddVendorModal";
 import Table from "../../../components/table/Table";
+import Plus from "../../common/Plus";
 
 import hooks from "../../../hooks";
 
@@ -48,6 +49,7 @@ function Vendors() {
         workspaceId={workspaceId}
         onClose={onClose}
       />
+      <Plus onClick={() => setIsOpen(true)} />
     </Wrapper>
   );
 }

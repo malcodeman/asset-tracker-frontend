@@ -7,6 +7,7 @@ import { getAssetsByWorkspaceId } from "../../workspaces/actions/workspacesActio
 import AddAssetModal from "./AddAssetModal";
 import Table from "../../../components/table/Table";
 import Tag from "../../../components/tag/Tag";
+import Plus from "../../common/Plus";
 
 import hooks from "../../../hooks";
 import utils from "../../../utils";
@@ -93,6 +94,7 @@ function Assets() {
         onClose={onClose}
         workspaceId={workspaceId}
       />
+      <Plus onClick={() => setIsOpen(true)} />
     </Wrapper>
   );
 }

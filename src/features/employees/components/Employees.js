@@ -7,6 +7,7 @@ import { getEmployeesByWorkspaceId } from "../../workspaces/actions/workspacesAc
 
 import AddEmployeeModal from "./AddEmployeeModal";
 import Table from "../../../components/table/Table";
+import Plus from "../../common/Plus";
 
 import hooks from "../../../hooks";
 import utils from "../../../utils";
@@ -63,6 +64,7 @@ function Employees() {
         workspaceId={workspaceId}
         onClose={onClose}
       />
+      <Plus onClick={() => setIsOpen(true)} />
     </Wrapper>
   );
 }
